@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: 240 236 226;
+  --card: 249 246 239;
+  --raise: 230 225 213;
+  --ink: 15 13 22;
+  --muted: 105 99 117;
+  --line: 214 207 190;
+  --metro: 123 45 142;
+  --bus: 31 95 191;
+}
+
+html { scroll-behavior: smooth; color-scheme: light; }
+body {
+  background: rgb(var(--paper));
+  color: rgb(var(--ink));
+  font-family: 'Manrope', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+i, em { font-style: normal; }
+.font-display { font-weight: 600; letter-spacing: -0.03em; }
+::selection { background: #E11D48; color: #fff; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.reveal.in { opacity: 1; transform: none; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes ping { 0% { transform: scale(0.6); opacity: 0.7; } 100% { transform: scale(2.6); opacity: 0; } }
+
+.draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.4s cubic-bezier(0.5, 0, 0.2, 1) forwards; }
+.fade { opacity: 0; animation: fade 0.8s ease forwards; }
+.rise { opacity: 0; animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+.pulse-ring { transform-box: fill-box; transform-origin: center; animation: ping 2.2s ease-out infinite; }
+
+input[type='range'].slim {
+  -webkit-appearance: none; appearance: none; height: 4px; width: 100%;
+  border-radius: 2px; outline: none; cursor: pointer;
+}
+input[type='range'].slim::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: rgb(var(--ink)); border: 3px solid rgb(var(--paper));
+}
+input[type='range'].slim::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: rgb(var(--ink)); border: 3px solid rgb(var(--paper));
+}
+
+select option { color: #14121c; background: #fff; font-family: 'Manrope', sans-serif; }
+input[type='time']::-webkit-calendar-picker-indicator { opacity: 0.5; cursor: pointer; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+:focus-visible { outline: 2px solid #E11D48; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+.leaflet-container { font-family: 'Manrope', sans-serif; background: #e8e4d8; }
+.nr-label.leaflet-tooltip { background: transparent; border: 0; box-shadow: none; padding: 0; font-weight: 700; font-size: 13px; color: #14121c; text-shadow: 0 0 3px #f0ece2, 0 0 3px #f0ece2, 0 0 6px #f0ece2; }
+.nr-label.leaflet-tooltip::before { display: none; }
+.nr-dest.leaflet-tooltip { color: #e11d48; font-size: 14px; }
+.nr-pin-o { width: 18px; height: 18px; border-radius: 50%; background: #14121c; border: 3px solid #f0ece2; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
+.nr-pin-d { width: 20px; height: 20px; background: #e11d48; border: 3px solid #f0ece2; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
+.nr-pin-s { width: 14px; height: 14px; border-radius: 50%; background: #f0ece2; border: 3px solid #14121c; }
+.leaflet-control-zoom a { color: #14121c !important; }
+.leaflet-tile-pane { filter: grayscale(0.55) sepia(0.12) contrast(0.92) brightness(1.04); }
+.nr-walk { position: absolute; transform: translate(-50%, 10px); white-space: nowrap; background: #14121c; color: #f0ece2; font: 700 11px Manrope, sans-serif; padding: 2px 8px; border-radius: 999px; box-shadow: 0 1px 4px rgba(0,0,0,.3); }
+.nr-me { position: relative; width: 26px; height: 26px; }
+.nr-me::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: rgba(225, 29, 72, 0.3); animation: ping 1.8s ease-out infinite; }
+.nr-me::after { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: #e11d48; border: 3px solid #fff; box-sizing: border-box; box-shadow: 0 1px 5px rgba(0,0,0,.4); }
