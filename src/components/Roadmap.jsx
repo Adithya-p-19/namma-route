@@ -13,7 +13,7 @@ const next = [
   ['Real transit data', 'Replace the sample network with BMTC and BMRCL timetables (GTFS).'],
   ['Backend swap', 'Set one environment variable and src/api.js calls FastAPI instead of the local solver.'],
   ['Live conditions', 'Time-of-day and traffic-aware travel times, crowding on metro and buses.'],
-  ['Learning-guided search', 'Reinforcement-learning guidance for transfer points, as in the reference papers.'],
+  ['Learning-guided search', 'Reinforcement-learning guidance for transfer points, as explored in recent transit research.'],
 ];
 
 const tone = { Built: 'bg-ink text-paper', Working: 'bg-ink text-paper', Next: 'border border-pin text-pin', Planned: 'border border-line text-muted' };

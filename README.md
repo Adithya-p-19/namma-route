@@ -4,10 +4,7 @@
 
 Namma Route compares journeys that mix walking, BMTC buses, Namma Metro and autos. Instead of returning one "best" route, it finds every route that is not beaten on time, fare, walking distance and number of changes, then ranks them by what matters to *you*.
 
-> Mini Project-II (22CS66) · Department of Computer Science and Engineering · 2026-27
-> Domain: AI and ML · SDG 11 (Sustainable Cities and Communities) · SDG 9 (Industry, Innovation and Infrastructure)
-
-> **Status: Review 1 prototype.** The stops, metro lines, bus routes and fares are **sample data**, not real BMTC or BMRCL timetables. See the [roadmap](#roadmap).
+> **Status: prototype.** The stops, metro lines, bus routes and fares are **sample data**, not real BMTC or BMRCL timetables. See the [roadmap](#roadmap).
 
 ---
 
@@ -64,7 +61,7 @@ Open <http://localhost:5173>. The map needs an internet connection to load tiles
 3. **Pareto pruning.** A label is discarded when another is at least as good on all four costs, or when a finished journey already dominates it. Hard limits keep the search bounded: 210 minutes, 2.5 km of walking, 5 boardings, 10 labels per state.
 4. **Ranking.** The surviving Pareto set is min-max normalised per criterion and combined with the slider weights. The lowest weighted score is *Best for you*. The match percentage is `100 x (1 - score)`.
 
-DSA concepts used: weighted graph (adjacency list), Dijkstra, priority queue (binary heap), Pareto dominance and branch-and-bound pruning, hash maps and sets, parent-pointer path reconstruction, and weighted-sum scalarisation.
+Under the hood: weighted graph (adjacency list), Dijkstra, priority queue (binary heap), Pareto dominance and branch-and-bound pruning, hash maps and sets, parent-pointer path reconstruction, and weighted-sum scalarisation.
 
 ## Project structure
 
@@ -139,20 +136,18 @@ Place ids and coordinates live in `src/data/network.js`. A place's doorstep is w
 - Road-following route geometry (OSRM or Google Directions) and a Google Maps layer.
 - PostgreSQL for saved trips and preferences.
 - Live traffic and crowding, and real GPS for Start journey.
-- Learning-guided transfer search, following the references below.
+- Learning-guided transfer search, following the research below.
 
-## References
+## Further reading
 
 1. Learning-Guided Transfer Point Search for Efficient Inter-Modal Routing With Mobility-on-Demand Feeders. <https://ieeexplore.ieee.org/abstract/document/11663089>
 2. Multi-Objective Optimization for Multimodal Multi-Objective Multi-Point Shortest Path Problem Considering Unforeseeable Road Eventualities. <https://ieeexplore.ieee.org/document/10959009>
 3. Dynamic Passenger Route Guidance in the Multimodal Transit System With Graph Representation and Attention Based Deep Reinforcement Learning. <https://ieeexplore.ieee.org/document/10508234>
 
-## Team
+## Built by
 
 - Adithya Patni
 - Aditya Ambaldaghe
 - Aditya GT
-
-**Guide:** Prof Dhananjaya Sharma
 
 Map data &copy; [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
